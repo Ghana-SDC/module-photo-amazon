@@ -22,7 +22,7 @@ const Picture = db.define('picture', {
 
 Picture.belongsTo(Image);
 
-db.sync({force:true})
+db.sync({force:false})
   .then(() => console.log('tables created successfully'))
   .catch((err) => console.log('error creating tables', err))
 
