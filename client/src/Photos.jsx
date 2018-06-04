@@ -5,33 +5,37 @@ import styled from 'styled-components'
 const Img = styled.img`
   width:480px;
   height: auto;
+  padding-left: .3%
 `
-const Span = styled.span`
-border:5px solid black;
-width: 
-`
+
 const AltImages = styled.div`
     width: 40px;
-    margin-left: -40px;
+    margin-left: 0px;
     float: left;
+    
 `
 const ImagesMain = styled.div`
   position: relative;
-  padding-left: 32px;
 `
-const imagesLeft = styled.div`
-  position:relative;
-  padding: 0;
+const ImagesLeft = styled.div`
+  ${'' /* padding: 32px; */}
 `
-const ImgList = styled.ul`
 
-`
-const ImgButtons = styled.li`
-
-`
 const ThumbImg = styled.img`
 width:40px;
 height:40px;
+background-color: transparent;
+color: transparent;
+border: .8px solid black;
+border-radius: 1.9px;
+margin-top: 5%;
+margin-bottom: 5%;
+&:hover {
+  border: .8px solid #e56f14;
+  ${'' /* outline: 3px solid #eda412; */}
+  box-shadow: 0px 0px 5px 2px #eda412;
+}
+
 `
 
 class Photos extends Component {
@@ -42,21 +46,39 @@ class Photos extends Component {
       images: [],
       main: ''
     }
+    this.handleClick = this.handleClick.bind(this);
   }
   componentDidMount() {
     axios.get('api/pictures/1')
      .then(res => {
        console.log('this is the response', res.data)
+      //  console.log('parsing data = ', res.data[0].url)
+       const pics = res.data[0].url.split(',')
+       console.log('pics array =', pics)
        this.setState({
-         main: res.data[0].url
+         main: pics[0],
+         images: [...pics]
        })
     })
   }
-  render() { 
+  handleClick(e) {
+    console.log('state of main img =', this.state.main)
+    this.setState({
+      main: e.target.src
+    })
+  }
+  render() {
+    const buttons = this.state.images.map((img, index) => (
+    <ThumbImg src={img} key={index} onClick={this.handleClick}/>
+    )) 
     return ( 
       <ImagesMain>
+    <ImagesLeft>
+  <AltImages>
+      {buttons}
+  </AltImages>
     <Img src={this.state.main}></Img>
-  <AltImages><ThumbImg src={this.state.main} /></AltImages>
+  </ImagesLeft>
       </ImagesMain>
      )
   }
