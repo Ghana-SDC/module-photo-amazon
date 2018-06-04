@@ -7,7 +7,6 @@ const pictureController = {
       }}]
     })
       .then(data => {
-        console.log('result of findall =', data)
         res.status(200).send(data)
       })
   }),
@@ -17,7 +16,6 @@ const pictureController = {
       }}]
     })
       .then(data => {
-        console.log('result of findall =', data)
         res.status(200).send(data)
       })
   })
