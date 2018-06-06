@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
-import Photos from './Photos.jsx'
+import App from './App.jsx'
 
-render(<Photos />, document.getElementById('root'));
+render(<App />, document.getElementById('root'));
