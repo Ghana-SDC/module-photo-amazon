@@ -1,19 +1,26 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import PhotoGallery from "./PhotoGallery.jsx"
 
 const Img = styled.img`
   width: 480px;
   height: auto;
   padding-left: 0.3%;
   overflow: auto;
-  ${"" /* display: block; */} position: relative;
+  position: relative;
   cursor: pointer;
 `;
 const Frame = styled.div`
+  ${'' /* height: 100px;
+  width: 200px;
   top: 0;
   left: 0;
   display: none;
   position: absolute;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  position: absolute;
+  pointer-events: none; */}
 `;
 const ZContainer = styled.div`
   width: 480px;
@@ -41,40 +48,44 @@ class PhotoZoom extends Component {
     this.handleMouseMove = this.handleMouseMove.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
+    this.getTargetElement = this.getTargetElement.bind(this);
   }
 
-  getTargetElement(el, targetId) {
+  getTargetElement = (el, targetId) => {
     const children = el.parentNode.childNodes;
     return Array.from(children).find(item => item.id === targetId);
   }
 
-  addFrame(x, y, el) {
+  addFrame = (x, y, el) => {
     const { left, top, width, height } = el.getBoundingClientRect();
     const minX = Math.min(x, left + width - this.frameWidth);
     const minY = Math.min(y, top + height - this.frameHeight);
     const frameEl = this.getTargetElement(el, "frame");
-    frameEl.style.left = "0px";
-    frameEl.style.top = "0px";
-    // frameEl.style.width = "200px";
-    // frameEl.style.height = "100px";
+    frameEl.style.left = `${minX}px`;
+    frameEl.style.top = `${minY}px`;
+    frameEl.style.width = "200px";
+    frameEl.style.height = "200px";
+    // frameEl.style.display = "none";
     frameEl.style.position = "absolute";
+    frameEl.style.background = 'hsla(0, 0%, 100%, .3)';
+    frameEl.style.border = '1px solid #ccc';
     //These scaled values determine the cursor position relative to the img
-    let scaledX = -3 * (minX - el.offsetLeft- 80);
-    let scaledY = -3 * (minY - el.offsetTop - 60);
-    scaledY > 0 ? scaledY = scaledY - 240 : scaledY
-    scaledX > 0 ? scaledX = scaledX - 180 : scaledX
-    console.log('scaledX =', scaledX, 'scaledY =', scaledY)
+    let scaledX = -3 * (minX - el.offsetLeft);
+    let scaledY = -3 * (minY - el.offsetTop);
+    // scaledX > 0 ? scaledX = scaledX - 160 : scaledX
+    // scaledY > 0 ? scaledY = scaledY - 120 : scaledY
+    // console.log('scaledX =', scaledX, 'scaledY =', scaledY)
     this.getTargetElement(
       el,
       "zoomContainer"
     ).style.backgroundPosition = `${scaledX}px ${scaledY}px`;
   }
 
-  hide(id, el) {
+  hide = (id, el) => {
     this.getTargetElement(el, id).style.display = "none";
   }
 
-  showZoomedContainer(el) {
+  showZoomedContainer = (el) => {
     const targetEl = this.getTargetElement(el, "zoomContainer");
     targetEl.style.display = "block";
     const { left, top, width } = el.getBoundingClientRect();
@@ -109,6 +120,9 @@ class PhotoZoom extends Component {
       zoomed: !this.state.zoomed
     });
   }
+  handlePhotos(e) {
+    <PhotoGallery current={e.target} images={this.props.images} />
+  }
 
   render() {
     const zoom = this.state.zoomed
@@ -117,11 +131,19 @@ class PhotoZoom extends Component {
     return (
       <div>
         <div className="zoomies">
-          <Img
+          {/* <Img
             onMouseMove={this.handleMouseMove}
             onMouseLeave={this.handleMouseLeave}
             onMouseEnter={this.handleMouseEnter}
             src={this.props.main}
+            onClick={this.handlePhotos}
+          /> */}
+          <PhotoGallery 
+            handleMouseMove={this.handleMouseMove}
+            handleMouseLeave={this.handleMouseLeave}
+            handleMouseEnter={this.handleMouseEnter}
+            src={this.props.main}
+            images={this.props.images}
           />
           <Frame id="frame" className="frame" />
           <ZContainer id="zoomContainer" className={this.props.main} />
