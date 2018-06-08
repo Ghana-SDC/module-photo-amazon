@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import styled, { css } from "styled-components";
-import { ThumbImg, MainThumb} from './style'
+import React from "react";
+import { ThumbImg, MainThumb, ImageGalThumb, ImageGalMainThumb } from './style'
 
 const ThumbRender = (props) => {
   const handleSelect = (e) => {
+    console.log('this is props.src', props.img, 'this is props.selected', props.selected)
     props.handleClick(e);
     e.target.style.border = ".8px solid #e56f14";
     e.target.style.boxShadow = "0px 0px 5px 2px #eda412";
@@ -13,10 +13,18 @@ const ThumbRender = (props) => {
     }
   }
 
+  if(props.showModal) {
+    if(props.img === props.selected) {
+    return <ImageGalMainThumb src={props.img} className="thumb" id={props.id} onMouseOver={handleSelect} isSelected={props.isSelected} />
+    } else {
+      return <ImageGalThumb src={props.img} className="thumbs" id={props.id} onMouseOver={handleSelect} isSelected={props.isSelected} />
+    }
+  }
+
   if(props.id === 0) {
-    return <MainThumb src={props.img} className={props.img} id={props.id} onMouseOver={handleSelect} isSelected={props.isSelected}/>
+    return <MainThumb src={props.img} className="thumb" id={props.id} onMouseOver={handleSelect} isSelected={props.isSelected}/>
   } else {
-    return <ThumbImg src={props.img} className={props.img} id={props.id} onMouseOver={handleSelect} isSelected={props.isSelected}/>
+    return <ThumbImg src={props.img} className="thumbs" id={props.id} onMouseOver={handleSelect} isSelected={props.isSelected}/>
   }
 }
 
