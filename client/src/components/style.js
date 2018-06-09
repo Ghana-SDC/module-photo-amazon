@@ -43,11 +43,13 @@ export const Popover = styled.div`
 export const ImageGalMain = styled.img`
   height: 600px;
   width: auto;
+  position: relative;
 `;
 export const ImageGalThumb = styled.img`
-  margin-right: 5%;
-  margin-left: 5%;
+  margin-right: 1%;
+  margin-left: 1%;
   margin-bottom: 1%;
+  margin-top: 10%;
   width: 50px;
   height: 50px;
   background-color: transparent;
@@ -55,11 +57,13 @@ export const ImageGalThumb = styled.img`
   border: 0.8px solid black;
   border-radius: 1.9px;
   float: right;
+  position: relative;
 `
 export const ImageGalMainThumb = styled.img`
-  margin-right: 5%;
-  margin-left: 5%;
+  margin-right: 1%;
+  margin-left: 1%;
   margin-bottom: 1%;
+  margin-top: 10%;
   width: 50px;
   height: 50px;
   float: right;
@@ -93,3 +97,16 @@ export const MainThumb = styled.img`
     props.isSelected ? "0.8px solid #e56f14" : "0.8px solid black"};
   box-shadow: ${props => (props.isSelected ? "0px 0px 5px 2px #eda412" : "")};
 `;
+
+export const Span = styled.span`
+  margin-left: 5%
+`
+
+export const Close = styled.button`
+  position: absolute;
+  ${'' /* float: right; */}
+  ${'' /* margin-bottom: 5%;
+  margin-left: 15%; */}
+  top: 5px;
+  right: 5px;
+  `

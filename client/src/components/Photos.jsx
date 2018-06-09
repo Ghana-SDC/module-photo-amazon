@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import ThumbRender from './ThumbRender.jsx';
 import ReactImageMagnify from 'react-image-magnify';
-import { AltImages, ImagesMain, ImagesLeft, ZoomContainer, ImageContainer, Popover, ImageGalMain, ImageGalThumb} from './style.js'
+import { AltImages, ImagesMain, ImagesLeft, ZoomContainer, ImageContainer, Popover, ImageGalMain, ImageGalThumb, Span} from './style.js'
 import PropTypes from 'prop-types';
-
 
 class Photos extends Component {
   constructor(props){
@@ -47,7 +46,7 @@ class Photos extends Component {
       },
       // enlargedImagePortalId: 'zoom',
       shouldUsePositiveSpaceLens: true
-    }} />{zoom}
+    }} /><Span>{zoom}</Span>
     <ZoomContainer id='zoom'></ZoomContainer>
     </ImageContainer>
       </ImagesMain>

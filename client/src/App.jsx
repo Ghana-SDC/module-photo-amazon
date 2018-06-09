@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Photos from './components/Photos.jsx';
 import Modal from 'react-modal';
 import axios from 'axios';
-import { ImageGalMain } from './components/style';
+import { ImageGalMain, Close } from './components/style';
 import ThumbRender from './components/ThumbRender.jsx';
 
 class App extends Component {
@@ -58,7 +58,7 @@ class App extends Component {
           {this.state.images.map((img, index) => (
             <ThumbRender img={img} id={index} key={index} handleClick={this.handleClick} main={this.state.main} selected={this.state.main} isSelected={this.state.isSelected} showModal={this.state.showModal}/>
           ))}
-          <button onClick={this.handleCloseModal}>Close</button>
+          <Close onClick={this.handleCloseModal}>&#128473;</Close>
         </Modal>
       <Photos id="photoContainer" handleModal={this.handleOpenModal} main={this.state.main} images={this.state.images} selected={this.state.selected} isSelected={this.state.isSelected} handleClick={this.handleClick} showMo={this.state.showModal}/>
         </div>
