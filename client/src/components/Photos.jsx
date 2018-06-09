@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import styled from 'styled-components';
-import PhotoZoom from './PhotoZoom.jsx';
 import ThumbRender from './ThumbRender.jsx';
 import ReactImageMagnify from 'react-image-magnify';
 import { AltImages, ImagesMain, ImagesLeft, ZoomContainer, ImageContainer, Popover, ImageGalMain, ImageGalThumb} from './style.js'
+import PropTypes from 'prop-types';
 
 
 class Photos extends Component {
@@ -13,6 +11,9 @@ class Photos extends Component {
     this.state = {
       zoomed: false
     }
+  }
+  static defaultProps = {
+    images: [],
   }
   handleMouseOver = () => {
     this.setState({
@@ -24,7 +25,7 @@ class Photos extends Component {
     ? "Click image to open expanded view"
     : "Roll over image to zoom in";
     return ( 
-      <ImagesMain>
+      <ImagesMain id="imagesMain">
     <ImagesLeft>
   <AltImages id="thumbs">
       {this.props.images.map((img, index) => (
@@ -33,7 +34,7 @@ class Photos extends Component {
   </AltImages>
   </ImagesLeft>
     <ImageContainer id="imageContainer" onClick={this.props.handleModal} onMouseEnter={this.handleMouseOver} onMouseLeave={this.handleMouseOver}>
-    <ReactImageMagnify  {...{
+    <ReactImageMagnify  id='zooms'{...{
       smallImage: {
         src: this.props.main,
         width: 400,
@@ -52,6 +53,12 @@ class Photos extends Component {
       </ImagesMain>
     )
   }
+}
+Photos.propTypes = {
+  images: PropTypes.array,
+  main: PropTypes.string,
+  selected: PropTypes.array,
+  isSelected: PropTypes.bool
 }
 
 export default Photos;
