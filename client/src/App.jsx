@@ -5,8 +5,6 @@ import axios from 'axios';
 import { ImageGalMain } from './components/style';
 import ThumbRender from './components/ThumbRender.jsx';
 
-Modal.setAppElement('#root')
-
 class App extends Component {
   constructor() {
     super()
@@ -47,13 +45,14 @@ class App extends Component {
   }
   render() { 
     return (
-      <div>
-      <Photos id="photoContainer" handleModal={this.handleOpenModal} main={this.state.main} images={this.state.images} selected={this.state.selected} isSelected={this.state.isSelected} handleClick={this.handleClick} showMo={this.state.showModal}/>
-      <Modal 
+      <div id="container">
+      <Modal
+      {...this.props}       
           isOpen={this.state.showModal}
           contentLabel="Photo Gallery"
           onRequestClose={this.handleCloseModal}
           shouldCloseOnOverlayClick={true}
+          className="PhotoModal"
         >
           <ImageGalMain src={this.state.main} className="mainImage" />
           {this.state.images.map((img, index) => (
@@ -61,6 +60,7 @@ class App extends Component {
           ))}
           <button onClick={this.handleCloseModal}>Close</button>
         </Modal>
+      <Photos id="photoContainer" handleModal={this.handleOpenModal} main={this.state.main} images={this.state.images} selected={this.state.selected} isSelected={this.state.isSelected} handleClick={this.handleClick} showMo={this.state.showModal}/>
         </div>
     )
   }
