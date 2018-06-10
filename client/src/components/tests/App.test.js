@@ -2,7 +2,7 @@ import React from "react";
 import Enzyme from "enzyme";
 import { shallow, mount, render } from "enzyme";
 import { findDOMNode } from "react-dom";
-import App from "../../App.jsx";
+import App from "../../components/App";
 import Adapter from "enzyme-adapter-react-16";
 import ReactModal from "react-modal";
 
