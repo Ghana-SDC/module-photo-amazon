@@ -1,5 +1,14 @@
 import styled from "styled-components";
 
+export const Container = styled.div`
+width: auto;
+height: auto;
+max-width: 70%;
+max-height: 50%;
+min-width: 70%;
+min-height: 70%;
+`
+
 export const AltImages = styled.div`
   width: 40px;
   margin-left: 0px;
@@ -10,6 +19,7 @@ export const ImagesMain = styled.div`
   overflow: auto;
   width: auto;
   height: auto;
+  max-width: 700px;
 `;
 export const ImagesLeft = styled.div``;
 
@@ -22,7 +32,9 @@ export const ZoomContainer = styled.div`
 export const ImageContainer = styled.div`
   width: auto;
   height: auto;
-  padding-left: 0.3%;
+  ${'' /* max-width: 800px;
+  max-height: 400px; */}
+  padding-left: 0.9%;
   overflow: auto;
   position: relative;
 `;
@@ -41,28 +53,27 @@ export const Popover = styled.div`
 `;
 
 export const ImageGalMain = styled.img`
-  height: 600px;
-  width: auto;
+  width: 500px;
+  height: 334px;
+  max-width: 500px;
   position: relative;
 `;
 export const ImageGalThumb = styled.img`
-  margin-right: 1%;
-  margin-left: 1%;
-  margin-bottom: 1%;
-  margin-top: 10%;
+  display: inline-block;
+  margin-left: 2%;
+  margin-bottom: 25%;
   width: 50px;
   height: 50px;
   background-color: transparent;
   color: transparent;
   border: 0.8px solid black;
   border-radius: 1.9px;
-  float: right;
   position: relative;
 `
 export const ImageGalMainThumb = styled.img`
   margin-right: 1%;
   margin-left: 1%;
-  margin-bottom: 1%;
+  margin-bottom: 10%;
   margin-top: 10%;
   width: 50px;
   height: 50px;
