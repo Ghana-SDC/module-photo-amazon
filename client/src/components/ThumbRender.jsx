@@ -3,7 +3,6 @@ import { ThumbImg, MainThumb, ImageGalThumb, ImageGalMainThumb } from './style'
 
 const ThumbRender = (props) => {
   const handleSelect = (e) => {
-    console.log('this is props.src', props.img, 'this is props.selected', props.selected)
     props.handleClick(e);
     e.target.style.border = ".8px solid #e56f14";
     e.target.style.boxShadow = "0px 0px 5px 2px #eda412";
