@@ -36,8 +36,8 @@ class Photos extends Component {
     <ReactImageMagnify  id='zooms'{...{
       smallImage: {
         src: this.props.main,
-        width: 400,
-        height: 260
+        width: 320,
+        height: 240
       },
       largeImage: {
         src: this.props.main,
@@ -47,8 +47,8 @@ class Photos extends Component {
       // enlargedImagePortalId: 'zoom',
       shouldUsePositiveSpaceLens: true
     }} /><Span>{zoom}</Span>
-    <ZoomContainer id='zoom'></ZoomContainer>
     </ImageContainer>
+    {/* <ZoomContainer id='zoom'></ZoomContainer> */}
       </ImagesMain>
     )
   }
