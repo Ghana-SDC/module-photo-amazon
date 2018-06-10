@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import App from './App.jsx';
+import App from './components/App.jsx';
 import Modal from 'react-modal';
-Modal.defaultStyles.overlay.right = "10%";
+
 
 
 Modal.setAppElement('#root')
