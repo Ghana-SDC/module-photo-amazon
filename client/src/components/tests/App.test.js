@@ -9,9 +9,6 @@ import ReactModal from "react-modal";
 Enzyme.configure({ adapter: new Adapter() });
 
 describe("App component", () => {
-  // it('should render the Photo component', () => {
-  //   expect(shallow(<App />).find('#container').exists()).toBe(true)
-  // })
 
   it("modal should exist", () => {
     const wrapper = mount(
@@ -21,7 +18,7 @@ describe("App component", () => {
     );
     expect(wrapper.find(".PhotoModal").exists()).toEqual(true);
   });
-  it("should render the container for its child components", () => {
+  it("the container for its child components should exist", () => {
     const wrapper = mount(
       <div id="root">
         <App />
@@ -29,7 +26,7 @@ describe("App component", () => {
     );
     expect(wrapper.find("#container").exists()).toEqual(true);
   });
-  it("renders the modal", () => {
+  it("finds the modal", () => {
     const wrapper = shallow(<App />);
     expect(wrapper.find(ReactModal).length).toEqual(1);
   });
@@ -42,4 +39,20 @@ describe("App component", () => {
     wrapper.find("#zooms").simulate("click");
     expect(wrapper.find(ReactModal).prop("isOpen")).toEqual(true);
   });
+  it("should set state", () => {
+    const wrapper = mount(
+      <div id="root">
+        <App />
+      </div>
+    );
+    wrapper.setProps({isSelectedMod: true, showModal: false, main: 'test', images:['test'], mainModal: 'test', selected: ['test'], isSelected: true, selectedMod: 'test'})
+    expect(wrapper.props().showModal).toBe(false);
+    expect(wrapper.props().images).toEqual(['test']);
+    expect(wrapper.props().main).toEqual('test');
+    expect(wrapper.props().mainModal).toEqual('test');
+    expect(wrapper.props().selected).toEqual(['test']);
+    expect(wrapper.props().isSelected).toBe(true);
+    expect(wrapper.props().isSelectedMod).toBe(true);
+    expect(wrapper.props().selectedMod).toEqual('test');
+  })
 });
