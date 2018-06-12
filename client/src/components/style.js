@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-width: auto;
-height: auto;
-max-width: 70%;
-max-height: 50%;
-min-width: 70%;
-min-height: 70%;
-`
+  width: auto;
+  height: auto;
+  max-width: 70%;
+  max-height: 50%;
+  min-width: 70%;
+  min-height: 70%;
+`;
 
 export const AltImages = styled.div`
   width: 40px;
@@ -32,9 +32,8 @@ export const ZoomContainer = styled.div`
 export const ImageContainer = styled.div`
   width: auto;
   height: auto;
-  ${'' /* max-width: 800px;
-  max-height: 400px; */}
-  padding-left: 0.9%;
+  ${"" /* max-width: 800px;
+  max-height: 400px; */} padding-left: 0.9%;
   overflow: auto;
   position: relative;
 `;
@@ -69,21 +68,21 @@ export const ImageGalThumb = styled.img`
   border: 0.8px solid black;
   border-radius: 1.9px;
   position: relative;
-`
+`;
 export const ImageGalMainThumb = styled.img`
-  margin-right: 1%;
-  margin-left: 1%;
-  margin-bottom: 10%;
-  margin-top: 10%;
+  display: inline-block;
+  margin-left: 2%;
+  margin-bottom: 25%;
   width: 50px;
   height: 50px;
-  float: right;
   background-color: transparent;
   color: transparent;
   border-radius: 1.9px;
+  position: relative;
+  border-radius: 1.9px;
   border: ${props =>
-  props.isSelected ? "0.8px solid #e56f14" : "0.8px solid black"};
-  box-shadow: ${props => (props.isSelected ? "0px 0px 5px 2px #eda412" : "")};
+    props.isSelectedMod ? "0.8px solid #e56f14" : "0.8px solid black"};
+  box-shadow: ${props => (props.isSelectedMod ? "0px 0px 5px 2px #eda412" : "")};
 `;
 
 export const ThumbImg = styled.img`
@@ -110,14 +109,17 @@ export const MainThumb = styled.img`
 `;
 
 export const Span = styled.span`
-  margin-left: 5%
-`
+  margin-left: 10%;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19px;
+  color: #111;
+`;
 
 export const Close = styled.button`
   position: absolute;
-  ${'' /* float: right; */}
-  ${'' /* margin-bottom: 5%;
+  ${"" /* float: right; */} ${"" /* margin-bottom: 5%;
   margin-left: 15%; */}
   top: 5px;
   right: 5px;
-  `
+`;
