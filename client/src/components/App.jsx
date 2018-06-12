@@ -19,31 +19,51 @@ class App extends Component {
       main: "",
       mainModal: "",
       selected: [],
-      isSelected: true
+      isSelected: true,
+      isSelectedMod: true,
+      selectedMod: []
     };
   }
   componentDidMount() {
-    axios.get("api/pictures/1").then(res => {
-      const pics = res.data[0].url.split(",");
+    this.getPictures(1);
+  }
+  getPictures = (id) => {
+    if(typeof id === 'number') {
+    axios.get(`api/pictures/${id}`)
+    .then((res) => {
+      const pics = res.data[0].url.split(',');
       this.setState({
         main: pics[0],
         images: [...pics],
         mainModal: pics[0]
-      });
-    });
+      })
+    })
+  } else if(typeof id === 'string') {
+    axios.get(`api/pictures/name/${id}`)
+    .then((res) => {
+      const pics = res.data[0].url.split(',');
+      this.setState({
+        main: pics[0],
+        images: [...pics],
+        mainModal: pics[0]
+      })
+    })  
   }
+  }
+
   handleClick = e => {
     this.setState({
       main: e.target.src,
       selected: e.target,
-      isSelected: false
+      isSelected: false,
+      selectedMod: e.target
     });
   };
   handleModalClick = e => {
     this.setState({
       mainModal: e.target.src,
       selected: e.target,
-      isSelected: false
+      selectedMod: e.target
     });
   };
   handleOpenModal = () => {
@@ -54,7 +74,8 @@ class App extends Component {
   };
   handleCloseModal = () => {
     this.setState({
-      showModal: false
+      showModal: false,
+      // isSelected: !this.state.isSelected
     });
   };
   render() {
@@ -84,6 +105,8 @@ class App extends Component {
               selected={this.state.selected}
               isSelected={this.state.isSelected}
               showModal={this.state.showModal}
+              selectedMod={this.state.selectedMod}
+              isSelectedMod={this.state.isSelectedMod}
             />
           ))}
           <Close onClick={this.handleCloseModal}>&#128473;</Close>
