@@ -4,7 +4,7 @@
   "description": "Photo Gallery Component for Product Page",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage --watch",
+    "test": "jest --coverage",
     "server": "nodemon server/index.js && npm run-script seed",
     "build": "webpack -w",
     "seed": "psql -d photos -U postgres < db/seed.sql"
