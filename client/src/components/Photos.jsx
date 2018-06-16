@@ -37,18 +37,19 @@ class Photos extends Component {
       smallImage: {
         src: this.props.main,
         width: 320,
-        height: 240
+        height: 240,
+        imageClassName: 'small'
       },
       largeImage: {
         src: this.props.main,
         width: 1024,
         height: 768
       },
-      // enlargedImagePortalId: 'zoom',
+      enlargedImagePortalId: 'zoomframe',
+      enlargedImagePosition: 'over',
       shouldUsePositiveSpaceLens: true
     }} /><Span>{zoom}</Span>
     </ImageContainer>
-    {/* <ZoomContainer id='zoom'></ZoomContainer> */}
       </ImagesMain>
     )
   }
