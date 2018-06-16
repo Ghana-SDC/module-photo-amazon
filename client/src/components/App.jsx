@@ -29,7 +29,7 @@ class App extends Component {
   }
   getPictures = (id) => {
     if(typeof id === 'number') {
-    axios.get(`api/pictures/${id}`)
+    axios.get(`http://localhost:1337/api/pictures/${id}`)
     .then((res) => {
       const pics = res.data[0].url.split(',');
       this.setState({
@@ -39,7 +39,7 @@ class App extends Component {
       })
     })
   } else if(typeof id === 'string') {
-    axios.get(`api/pictures/name/${id}`)
+    axios.get(`http://localhost:1337/api/pictures/name/${id}`)
     .then((res) => {
       const pics = res.data[0].url.split(',');
       this.setState({
@@ -75,7 +75,6 @@ class App extends Component {
   handleCloseModal = () => {
     this.setState({
       showModal: false,
-      // isSelected: !this.state.isSelected
     });
   };
   render() {
