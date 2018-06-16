@@ -1,5 +1,5 @@
 import React from "react";
-import { ThumbImg, MainThumb, ImageGalThumb, ImageGalMainThumb } from './style'
+import { ThumbImg, MainThumb, ImageGalMainThumb, ImageGalThumb } from './style'
 
 const ThumbRender = (props) => {
   const handleSelect = (e) => {
@@ -29,11 +29,12 @@ const ThumbRender = (props) => {
     e.target.style.boxShadow = "0px 0px 5px 2px #eda412";
   }
 
+
   if(props.showModal) {
     if(props.img === props.main) {
-    return <ImageGalMainThumb src={props.img} className="thumb" id={props.id} onMouseEnter={handleEnterMod} onMouseLeave={handleLeaveMod} isSelectedMod={props.isSelectedMod} onClick={handleSelectMod}/>
+    return <ImageGalMainThumb src={props.img} className="thumbsGalMain" id={props.id} onMouseEnter={handleEnterMod} onMouseLeave={handleLeaveMod} isSelectedMod={props.isSelectedMod} onClick={handleSelectMod}/>
     } else {
-      return <ImageGalThumb src={props.img} className="thumbs" id={props.id} onMouseEnter={handleEnterMod} onMouseLeave={handleLeaveMod} isSelectedMod={props.isSelectedMod} onClick={handleSelectMod}/>
+      return <ImageGalThumb src={props.img} className="thumbsGal" id={props.id} onMouseEnter={handleEnterMod} onMouseLeave={handleLeaveMod} isSelectedMod={props.isSelectedMod} onClick={handleSelectMod}/>
     }
   }
 
@@ -45,3 +46,10 @@ const ThumbRender = (props) => {
 }
 
 export default ThumbRender;
+
+/*
+style={ImageGalMainThumb}
+style={ImageGalThumb}
+style={MainThumb}
+style={ThumbImg}
+*/
