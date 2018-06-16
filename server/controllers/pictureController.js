@@ -2,6 +2,7 @@ const { Product, Picture, Image } = require('../../db/models/photos.js');
 
 const pictureController = {
   'getId':((req, res) => {
+    console.log('HI!')
     Picture.findAll({ include:[{
       model: Image, where: {id: req.params.id
       }}]
