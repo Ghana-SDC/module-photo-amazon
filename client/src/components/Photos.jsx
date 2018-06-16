@@ -45,7 +45,7 @@ class Photos extends Component {
         width: 1024,
         height: 768
       },
-      enlargedImagePortalId: 'zoomframe',
+      // enlargedImagePortalId: 'zoomframe',
       enlargedImagePosition: 'over',
       shouldUsePositiveSpaceLens: true
     }} /><Span>{zoom}</Span>
