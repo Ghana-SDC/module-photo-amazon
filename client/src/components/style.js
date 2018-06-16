@@ -3,10 +3,9 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: auto;
   height: auto;
-  max-width: 70%;
+  ${'' /* max-width: 70%;
   max-height: 50%;
-  min-width: 70%;
-  min-height: 70%;
+  min-width: 70%; */}
 `;
 
 export const AltImages = styled.div`
@@ -17,9 +16,10 @@ export const AltImages = styled.div`
 export const ImagesMain = styled.div`
   position: relative;
   overflow: auto;
-  width: auto;
+  width: 380px;
+  min-width: 322px;
   height: auto;
-  max-width: 700px;
+  ${'' /* max-width: 700px; */}
 `;
 export const ImagesLeft = styled.div``;
 
@@ -31,10 +31,12 @@ export const ZoomContainer = styled.div`
 `;
 export const ImageContainer = styled.div`
   width: auto;
+  ${'' /* max-width: 60%; */}
   height: auto;
+  ${'' /* max-height: 50%; */}
   ${"" /* max-width: 800px;
   max-height: 400px; */} padding-left: 0.9%;
-  overflow: auto;
+  overflow: hidden;
   position: relative;
 `;
 
