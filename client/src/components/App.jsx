@@ -30,6 +30,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+    console.log('instance 1')
     this.getPictures(this.num())
   }
 
